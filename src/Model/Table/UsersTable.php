@@ -106,5 +106,20 @@ class UsersTable extends Table
         $user = $this->find();
 
 		return $user;
+	}
+	
+	/**
+    * ユーザー1件取得
+    *
+    * @param  int $id
+    * @return Cake\ORM\Query
+    */
+    public function getOneUser($user_id)
+    {
+        $user = $this->find()
+            ->where(['id' => $user_id])
+            ->first();
+    
+        return $user;
     }
 }
