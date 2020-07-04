@@ -12,6 +12,7 @@ use App\Controller\AppController;
  */
 class UsersController extends AppController
 {
+
     /**
      * Index method
      *
@@ -22,9 +23,16 @@ class UsersController extends AppController
         $this->paginate = [
             'contain' => ['Departments'],
         ];
-        $users = $this->paginate($this->Users);
 
-        $this->set(compact('users'));
+        // 一覧取得
+        $users = $this->Users->getListQuery();
+        $users = $this->paginate($users);
+
+        // 複数Viewに一気に渡す場合
+        // $this->set(compact('users'));`
+
+        // 1つずつViewに渡す場合
+        $this->set('users', $users);
     }
 
     /**

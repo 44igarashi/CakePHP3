@@ -94,4 +94,17 @@ class UsersTable extends Table
 
         return $rules;
     }
+
+	/**
+    * ユーザー一覧取得
+    *
+    * @param
+    * @return Cake\ORM\Query
+    */
+	public function getListQuery()
+    {
+        $user = $this->find();
+
+		return $user;
+    }
 }
