@@ -52,4 +52,12 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
     }
+
+    // 複数モデルの読み込み
+    protected function loadModels($models=[])
+    {
+        foreach ($models as $model) {
+            $this->loadModel($model);
+        }
+    }
 }
