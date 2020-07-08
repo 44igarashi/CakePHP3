@@ -27,3 +27,6 @@
     <?= $this->Form->button(__('Submit')) ?>
     <?= $this->Form->end() ?>
 </div>
+
+<!-- jsファイルの読み込み-->
+<?= $this->Html->script('pages/Users/add') ?>
