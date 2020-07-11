@@ -13,6 +13,12 @@ use App\Controller\AppController;
 class UsersController extends AppController
 {
 
+    public function initialize()
+    {
+        parent::initialize();
+        $this->loadmodels(['Departments']);
+    }
+
     /**
      * Index method
      *
@@ -66,8 +72,11 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $departments = $this->Users->Departments->find('list', ['limit' => 200]);
-        $this->set(compact('user', 'departments'));
+
+        $departments = $this->Departments->getListDepartments();
+
+        $this->set('user',        $user);
+        $this->set('departments', $departments);
     }
 
     /**

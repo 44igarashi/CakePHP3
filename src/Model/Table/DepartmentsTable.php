@@ -69,4 +69,20 @@ class DepartmentsTable extends Table
 
         return $validator;
     }
+
+    /**
+    * 部署リストの取得
+    *
+    * @return Cake\ORM\Query
+    */
+    public function getListDepartments()
+    {
+        $query = $this->find('list', [
+            'keyField'   => 'id',
+            'valueField' => 'name'
+        ])
+        ->where(['del_flg' => FLG_OFF]);
+
+        return $query;
+    }
 }
